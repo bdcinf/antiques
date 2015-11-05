@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Action Antiques</title>
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+ <link rel="stylesheet" href="/css/foundation.css">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  
+</head>
+<body>
+  <div class="row" style="background-color:#000; height:40px">
+    <div class="large-2 large-offset-10 columns">
+      <%= link_to "Go to Storefront", {:controller=>"product_categories", :action=>"index"},:class=>"ProductDetails tiny button radius secondary QuickView", :style=>"height:25px;border-radius:5px;margin-top:10px;padding-top:5px" %>
+    </div>
+  </div>
+  <!-- placeholder spot -->
+    <a name="top"></a>
+  <!--placeholder ends-->
+
+<!--top bar section -->
+  <div class="row rowman">
+    <div class="large-12 columns heading bar">
+    <div class="large-2 small-4 columns">
+      <%= link_to image_tag("/img/Final logo.png", :border => 0, :class => 'site-logo'), {:controller => 'product_categories', :action => 'index'}, :id => 'logo_a' %>
+    </div>
+    <div class="large-10 small-8 columns">
+      <p id="heading-p">India's Largest Indo-Portuguese Antiques Dealer</p>
+    </div>
+  </div>
+  </div>
+
+  <!-- <div class="row" style="height:50px">
+    <div class="large-12 columns">
+      <div class="row">
+        <div class="large-4 columns">
+          <img class="site-logo" src="/img/Final logo.png">
+        </div>      
+      </div>
+    </div>
+  </div> -->
+<style>
+body {
+  background: #fff;
+}
+
+</style>
+
+<div class="center row">
+  <div class="section-container tabs" data-section="tabs">
+    <section class="active">
+      <div class="content" data-section-content>
+        <p>
+          <div class="row">
+            <div class="large-12 columns panel login-panel">
+              <div class="signup-panel">
+                <p class="welcome">Action Antiques Login</p>
+              <%= form_tag :action => :check_login do %>
+                  <div class="row collapse">
+                    <div class="small-2 columns">
+                      <span class="prefix"><i class="fi-mail"></i></span>
+                    </div>
+                    <div class="small-10  columns">
+                      <%= text_field_tag :user, nil, :placeholder => "Username" %>
+                    </div>
+                  </div>
+                  <div class="row collapse">
+                    <div class="small-2 columns ">
+                      <span class="prefix"><i class="fi-lock"></i></span>
+                    </div>
+                    <div class="small-10 columns ">
+                      <%= password_field_tag :password, nil,:placeholder => "Password" %>
+                    </div>
+                  </div>
+                  <%= submit_tag 'Log In', :class =>"expand button" %>
+                <%end%>
+              </div>
+            </div>
+           </div></p>
+      </div>
+    </section>
+  </div>
+<div>
+  <script src="/js/jquery-2.0.3.js"></script>
+  <script src="/js/modernizr.js"></script>
+  <script type="text/javascript">
+    function confirmAction(){
+          var confirmed = confirm("Are you sure?");
+          return confirmed;
+    }
+  </script>
+
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= yield :javascript %>
+
+</body>
+</html>

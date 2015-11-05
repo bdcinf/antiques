@@ -1,0 +1,29 @@
+<div>
+	<h6>Product SubCategory</h6>
+	<%= select_tag "product[product_subcategory_id]", options_from_collection_for_select(subcat[:subcategories], "id", "name") %>
+	<br>
+	<script type="text/javascript">
+	$(function(){
+		$('#product_product_subcategory_id').on('change', function() {
+		  $.ajax({
+		    url: "/update_subsubcat",
+		    type: "GET",
+		    data: {"product_subcategory_id" : $(this).val()},
+		    dataType: "html",
+		    success: function(data) {
+		      $("#update_subsubcategory").html(data);
+		    }
+		  });
+		}); 
+	});
+	</script>
+</div>
+<div id="update_subsubcategory">
+	<h6>Product Subcategory Level 1</h6>
+	<% if subcat[:subcategories].empty? %>
+		<%= select_tag "product[product_subsubcategory_id]" %>
+	<% else %>
+		<%= select_tag "product[product_subsubcategory_id]", options_from_collection_for_select(subcat[:subsubcategories], "id", "name") %>
+	<% end %>
+	<br>
+</div>

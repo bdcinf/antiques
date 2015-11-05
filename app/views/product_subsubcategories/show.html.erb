@@ -1,0 +1,46 @@
+<!-- products-->
+<link rel="stylesheet" type="text/css" href="/css/product_category.css">
+<style>
+	#slider { margin-bottom: 30px; }
+	div.navBulletsWrapper  { padding-top:80px; }
+</style>
+
+<script type="text/javascript">
+	$(function(){
+		$(".category_img").on("mouseover", function(){
+			$(this).css({"border":"1px solid","border-color":"#ff8400"});
+			$(this).parent().children(".panel-cat").css({"color":"#fff","background-color":"#ff8400"});
+		});
+		$(".category_img").on("mouseleave", function(){
+			$(this).css({"border":"none"});
+			$(this).parent().children(".panel-cat").css({"color":"#333333","background-color":"#f2f2f2", "border-color":"#d8d8d8"});
+		});
+
+		$(".panel-cat").on("mouseover",function(){
+			$(this).parent().children(".category_img").css({"border":"1px solid","border-color":"#ff8400"});
+			$(this).css({"color":"#fff","background-color":"#ff8400"});
+		});
+		
+		$(".panel-cat").on("mouseleave",function(){
+			$(this).parent().children(".category_img").css({"border":"none"});
+			$(this).css({"color":"#333333","background-color":"#f2f2f2", "border-color":"#d8d8d8"});
+		});
+
+	});
+</script>
+<div class="row">
+	<div class="large-12 small-12 columns">
+		<div class="row">
+			<% @subcategory.product_subsubcategories.each do |subsubcategory| %>
+			<a href="/products?product_category_id=<%=@category.id%>&product_subcategory_id=<%= @subcategory.id %>&product_subsubcategory_id=<%= subsubcategory.id %>">
+				<div class="large-3 small-6 columns">
+					<div class="category_img">
+						<img src="<%= subsubcategory.img_file.url %>">
+					</div>
+					<h6 class="panel panel-cat"><%= subsubcategory.name %></h6>
+				</div>
+			</a>
+			<% end %>
+		</div>
+	</div>
+</div>

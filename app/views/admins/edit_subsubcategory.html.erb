@@ -1,0 +1,97 @@
+<style>
+	.top-bar-section ul li a {
+		width:100%;
+	}
+</style>
+
+<script type="text/javascript">
+$(function(){
+
+	$('#product_subsubcategory_product_category_id').on('change', function() {
+	  $.ajax({
+	    url: "/update_subcat_for_subcat_lvl_1",
+	    type: "GET",
+	    data: {"product_category_id" : $(this).val()},
+	    dataType: "html",
+	    success: function(data) {
+	      $("#update_subcategory").html(data);
+	    }
+	  });
+	});
+});
+</script>
+
+<% session[:return_to] ||= request.referer %>
+<% if @subsubcategory.errors.any? %>
+<div class="row">
+	<div class="large-10 large-centered columns form-errors">
+  		<div id="error_explanation">
+    		<h3><%= pluralize(@subsubcategory.errors.count, "error") %> prohibited this subcategory level 1 from being saved:</h3>
+    		<ul>
+    		<% @subsubcategory.errors.full_messages.each do |msg| %>
+      			<li><%= msg %></li>
+    		<% end %>
+    		</ul>
+  		</div>
+	</div>
+</div>
+<% end %>
+
+<div class="row" style="min-height:500px">
+	<div class="large-10 large-centered columns">
+			<h3>Edit Subcategory Level 1</h3>
+	</div>
+	<div class="large-10 large-centered columns">
+		<%= form_for @subsubcategory, :url => {:controller=> "admins", :action => "update_subsubcategory", :id => @subsubcategory.id}, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+			<div>
+				<h6>Product Category</h6>
+				<% options = options_from_collection_for_select(ProductCategory.order('name ASC'), 'id', 'name', @subsubcategory.product_category_id) %>
+				<%= f.select :product_category_id,  options %>
+			</div>
+			<div id="update_subcategory" >
+				<h6>Product SubCategory</h6>
+				<% if @subsubcategory.product_subcategory_id.nil? %>
+					<% options = options_from_collection_for_select(ProductSubcategory.where(:product_category_id => @subsubcategory.product_category_id).order('name ASC'), 'id', 'name',@subsubcategory.product_subcategory_id) %>
+					<%= f.select :product_subcategory_id,  options, {:include_blank => true, :default => nil} %>
+				<% else %>
+					<% options = options_from_collection_for_select(ProductSubcategory.where(:product_category_id => @subsubcategory.product_category_id).order('name ASC'), 'id', 'name', @subsubcategory.product_subcategory_id) %>
+					<%= f.select :product_subcategory_id,  options %>
+				<% end %>
+			</div>	
+			<div>
+				<%= f.label :name %>
+				<%= f.text_field :name, :maxlength => 255 %>
+			</div>
+			<div>
+				<%= f.label :description %>
+				<%= f.cktext_area :description, :class => 'ckeditor', :maxlength => 4000 %>
+			</div>
+			<div>
+				<%= f.label "Edit Display Image" %>
+				<% if @subsubcategory.img_file.exists? %>
+					<%= image_tag @subsubcategory.img_file.url, {:id => :image, :style => "font-weight:bold; width:150px; height:150px"} %>
+				<% end %>
+                <%= f.file_field :img_file, { :accept => 'image/*', :onchange => 'readURL(this)'} %>
+                <!--<input id ="override_button" type="button" value="Browse.."></input>-->
+                <script>
+                  if($("#image").attr("alt") == "Upload Image :")
+                  {
+                    $("#image").attr("src", "/img/blank_profile.jpg");
+                  }
+
+                  function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader1 = new FileReader();
+
+                        reader1.onload = function (e) {
+                            $('#image').attr('src', e.target.result);
+                        };
+                        reader1.readAsDataURL(input.files[0]);
+                    }
+                  }
+                </script>
+			</div>
+			<div><%= f.submit "Update Subcategory Level 1" %> </div>
+		<% end %>
+	</div>
+</div>

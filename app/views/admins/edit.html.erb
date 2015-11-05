@@ -1,0 +1,137 @@
+<style>
+	.top-bar-section ul li a {
+		width:100%;
+	}
+</style>
+
+<script type="text/javascript">
+$(function(){
+	$('#product_product_category_id').on('change', function() {
+	  	$.ajax({
+		    url: "/update_subcat",
+		    type: "GET",
+		    data: {"product_category_id" : $(this).val()},
+		    dataType: "html",
+		    success: function(data) {
+		      $("#update_content").html(data);
+		    }
+		});
+	});
+});
+</script>
+<% session[:return_to] ||= request.referer %>
+<% if @product.errors.any? %>
+<div class="row">
+	<div class="large-10 large-centered columns form-errors">
+  		<div id="error_explanation">
+    		<h3><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h3>
+    		<ul>
+    		<% @product.errors.full_messages.each do |msg| %>
+      			<li><%= msg %></li>
+    		<% end %>
+    		</ul>
+  		</div>
+	</div>
+</div>
+<% end %>
+
+
+<div class="row" style="min-height:500px">
+	<div class="large-10 large-centered columns">
+			<h3>Edit Product</h3>
+	</div>
+	<div class="large-10 large-centered columns">
+		<%= form_for @product, :url => {:controller=> "admins", :action => "update", :id => @product.id}, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+			<div>
+				<%= f.label :name %>
+				<%= f.text_field :name, :maxlength => 255 %>
+			</div>
+			<div>
+				<h6>Product Id</h6>
+				<%= f.text_field :product_var_id, :maxlength =>10 %>
+			</div>
+			<div>
+				<%= f.label :price%>
+				<span style="display:block"><%= f.text_field :price, :maxlength => 10 %> INR</span><br>
+			</div>
+			<div>
+				<h6>Product Category</h6>
+				<% options = options_from_collection_for_select(ProductCategory.order('name ASC'), 'id', 'name', @product.product_category_id) %>
+				<%= f.select :product_category_id,  options %>
+			</div>
+			<div id="update_content">
+				<div>
+					<h6>Product SubCategory</h6>
+					<% if @product.product_subcategory_id.nil? %>
+						<% options = options_from_collection_for_select(ProductSubcategory.where(:product_category_id => @product.product_category_id).order('name ASC'), 'id', 'name',@product.product_subcategory_id) %>
+						<%= f.select :product_subcategory_id,  options, {:include_blank => true, :default => nil} %>
+					<% else %>
+						<% options = options_from_collection_for_select(ProductSubcategory.where(:product_category_id => @product.product_category_id).order('name ASC'), 'id', 'name', @product.product_subcategory_id) %>
+						<%= f.select :product_subcategory_id,  options %>
+					<% end %>
+				</div>
+				<div id="update_subsubcategory">
+					<h6>Product Subcategory Level 1</h6>
+					<% if @product.product_subsubcategory_id.nil? %>
+						<% options = options_from_collection_for_select(ProductSubsubcategory.where(:product_subcategory_id => @product.product_subcategory_id).order('name ASC'), 'id', 'name',@product.product_subsubcategory_id) %>
+						<%= f.select :product_subsubcategory_id,  options, {:include_blank => true, :default => nil} %>
+					<% else %>
+						<% options = options_from_collection_for_select(ProductSubsubcategory.where(:product_subcategory_id => @product.product_subcategory_id).order('name ASC'), 'id', 'name', @product.product_subsubcategory_id) %>
+						<%= f.select :product_subsubcategory_id,  options %>
+					<% end %>
+				</div>
+			</div>
+			<div>
+				<%= f.label :description %>
+				<%= f.cktext_area :description, :class => 'ckeditor', :maxlength => 4000 %>
+			</div>
+			<div>
+				<h6>Status</h6>
+				<%= f.radio_button :status, 'active' %> 
+			  	<%= label :status_active, 'Active' %>
+			  	<%= f.radio_button :status, 'hidden' %>
+			  	<%= label :status_hidden, 'Hidden' %>
+			</div>
+			<div>
+				<%= f.label "Edit Main Display Image" %>
+				<% if @product.img_file.exists? %>
+					<%= image_tag @product.img_file.url, {:id => :image, :style => "font-weight:bold; width:150px; height:150px"} %>
+				<% end %>
+                <%= f.file_field :img_file, { :accept => 'image/*', :onchange => 'readURL(this)'} %>
+                <!--<input id ="override_button" type="button" value="Browse.."></input>-->
+                <script>
+                  if($("#image").attr("alt") == "Upload Image :")
+                  {
+                    $("#image").attr("src", "/img/blank_profile.jpg");
+                  }
+
+                  function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader1 = new FileReader();
+
+                        reader1.onload = function (e) {
+                            $('#image').attr('src', e.target.result);
+                        };
+                        reader1.readAsDataURL(input.files[0]);
+                    }
+                  }
+                </script>
+			</div>
+			<div>
+				<% @product.product_images.each do |pic| %> 
+				    <%= f.fields_for :product_images, pic do |image_fields| %>
+				    <div>
+				      <%= image_tag pic.image.url, :style=> "width:100px; height:100px" %>
+				      <%= image_fields.check_box :_destroy %>Delete Image
+				  	</div>
+				    <% end %>
+				  <% end %>
+			</div>
+			<div>
+				<h3><%= f.label "Add new product images(optional)", :class => 'control-label' %></h3>
+      			<%= file_field_tag "images[]", type: :file, multiple: true %>
+    		</div>
+			<div><%= f.submit "Update Product" %> </div>
+		<% end %>
+	</div>
+</div>

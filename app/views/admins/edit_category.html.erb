@@ -1,0 +1,65 @@
+<style>
+	.top-bar-section ul li a {
+		width:100%;
+	}
+</style>
+
+<% session[:return_to] ||= request.referer %>
+<% if @category.errors.any? %>
+<div class="row">
+	<div class="large-10 large-centered columns form-errors">
+  		<div id="error_explanation">
+    		<h3><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h3>
+    		<ul>
+    		<% @category.errors.full_messages.each do |msg| %>
+      			<li><%= msg %></li>
+    		<% end %>
+    		</ul>
+  		</div>
+	</div>
+</div>
+<% end %>
+
+<div class="row" style="min-height:500px">
+	<div class="large-10 large-centered columns">
+			<h3>Edit Category</h3>
+	</div>
+	<div class="large-10 large-centered columns">
+		<%= form_for @category, :url => {:controller=> "admins", :action => "update_category", :id => @category.id}, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+			<p>
+				<%= f.label :name %>
+				<%= f.text_field :name, :maxlength => 255 %>
+			</p>
+			<p>
+				<%= f.label :description %>
+				<%= f.cktext_area :description, :class => 'ckeditor', :maxlength => 4000 %>
+			</p>
+			<p>
+				<%= f.label "Edit Display Image" %>
+				<% if @category.img_file.exists? %>
+					<%= image_tag @category.img_file.url, {:id => :image, :style => "font-weight:bold; width:150px; height:150px"} %>
+				<% end %>
+                <%= f.file_field :img_file, { :accept => 'image/*', :onchange => 'readURL(this)'} %>
+                <!--<input id ="override_button" type="button" value="Browse.."></input>-->
+                <script>
+                  if($("#image").attr("alt") == "Upload Image :")
+                  {
+                    $("#image").attr("src", "/img/blank_profile.jpg");
+                  }
+
+                  function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader1 = new FileReader();
+
+                        reader1.onload = function (e) {
+                            $('#image').attr('src', e.target.result);
+                        };
+                        reader1.readAsDataURL(input.files[0]);
+                    }
+                  }
+                </script>
+			</p>
+			<p><%= f.submit "Update Category" %> </p>
+		<% end %>
+	</div>
+</div>

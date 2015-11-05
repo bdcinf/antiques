@@ -1,0 +1,257 @@
+/* Main content */
+
+/*.InfoMain
+{
+	text-align: justify;
+	color: #444444;
+	margin-bottom: 0px;	
+	padding-top: 30px;
+	padding-bottom:30px;
+}*/
+
+.Info
+{
+	background-color: rgb(248,248,248);
+	border-color: #ABABAB;
+	border-style:inset;
+	border-radius: 12px;
+	box-shadow:8px 8px 8px #888888;
+	padding:40px 80px 40px 80px;
+	text-align: justify;
+	color: #444444;
+	margin-top: 40px;
+	margin-bottom: 40px;	
+	z-index:2;
+}
+
+body
+{
+	background-color: #FFFFFF;
+	font-family:"Times New Roman",Times,serif;
+	min-height: 100%;
+	line-height: 1.4;
+}
+
+.top-bar
+{
+	display:block;
+}
+
+.logo
+{
+	height: 135px;
+	width: 145px;
+	background-color: rgb(34, 34, 34);
+	margin-top: 5px;
+	margin-bottom: 5px;
+	float:left;
+}
+.company_name
+{
+	font-size: 28px;
+	color: #a4a55b;
+}
+
+/*.contain-to-grid
+{
+	height:120px;
+	margin-top:-22px;
+}*/
+
+
+ .contain-to-grid, .top-bar, .menu-icon, .top-bar-section ul li > a, .top-bar-section li a:not(.button), .top-bar .name
+ {
+		height: 55px;
+		font-size: 16px;
+	 /* Safari 4-5, Chrome 1-9 */ 
+	 background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a4a55b), to(#79871A)); 
+	 /* Safari 5.1, Chrome 10+ */ 
+	 background: -webkit-linear-gradient(top, #a4a55b, #79871A); 
+	 /* Firefox 3.6+ */ 
+	 background: -moz-linear-gradient(top, #84C341, #7C9624); 
+	 /* IE 10 */ 
+	 background: -ms-linear-gradient(top, #a4a55b, #79871A); 
+	 /* Opera 11.10+ */ 
+	 background: -o-linear-gradient(top, #a4a55b, #79871A);
+}
+
+.right
+{
+	z-index: 10000;
+	position:relative;
+}
+
+/*.top-bar-section ul li > a, .top-bar-section li a:not(.button), .top-bar-section ul li,.top-bar-section ul
+{
+	border-radius: 7px;
+}
+
+.top-bar-section ul
+{
+	margin-left:190px;
+}*/
+
+/*ul li a:hover, ul li a:focus
+{
+	color: #a4a55b;
+}*/
+
+b
+{
+	color: #a4a55b;
+}
+
+.HFStyle
+{
+	height: 1px;
+	background-color: rgb(51,51,51);
+}
+
+.footer
+{
+	margin: 0px;
+	padding: 0px;
+	height:80px;
+
+	 /* Safari 4-5, Chrome 1-9 */ 
+	 background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#879524), to(#79871A)); 
+	 /* Safari 5.1, Chrome 10+ */ 
+	 background: -webkit-linear-gradient(top, #879524, #79871A); 
+	 /* Firefox 3.6+ */ 
+	 background: -moz-linear-gradient(top, #84C341, #7C9624); 
+	 /* IE 10 */ 
+	 background: -ms-linear-gradient(top, #879524, #79871A); 
+	 /* Opera 11.10+ */ 
+	 background: -o-linear-gradient(top, #879524, #79871A);
+}
+
+.sub-footer
+{
+	/* Safari 4-5, Chrome 1-9 */ 
+	 background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#879524), to(#79871A)); 
+	 /* Safari 5.1, Chrome 10+ */ 
+	 background: -webkit-linear-gradient(top, #879524, #79871A); 
+	 /* Firefox 3.6+ */ 
+	 background: -moz-linear-gradient(top, #81B337, #7C9624); 
+	 /* IE 10 */ 
+	 background: -ms-linear-gradient(top, #879524, #79871A); 
+	 /* Opera 11.10+ */ 
+	 background: -o-linear-gradient(top, #879524, #79871A);
+
+}
+
+.inline-list li a
+{
+	color: #EEEEEE;
+	margin-top: 6px;
+}
+
+.connect
+{
+	margin-top: 15px;
+	margin-left: 5px;
+	height: 28px;
+	width: 28px;
+
+	 /* Safari 4-5, Chrome 1-9 */ 
+	 background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#849222), to(#808E1F)); 
+	 /* Safari 5.1, Chrome 10+ */ 
+	 background: -webkit-linear-gradient(top, #849222, #808E1F); 
+	 /* Firefox 3.6+ */ 
+	 background: -moz-linear-gradient(top, #81B337, #7C9624); 
+	 /* IE 10 */ 
+	 background: -ms-linear-gradient(top, #849222, #808E1F); 
+	 /* Opera 11.10+ */ 
+	 background: -o-linear-gradient(top, #849222, #808E1F);
+}
+
+.copyright
+{
+	color: #BBBBBB;
+	margin-top: -12px;
+}
+
+/*Home page*/
+
+.row
+{
+	min-width:100%;
+}
+
+/*About Us page*/
+.profile
+{
+	margin-bottom: 8px;
+}
+
+.blank_image
+{
+	height: 105px;
+	width: 90px;
+}
+
+
+/*Services page*/
+#services li 
+{
+	list-style-type: none;
+}
+
+.arrow
+{	
+	height: 10px;
+	width: 16px;
+}
+
+#services li a 
+{
+	margin-left:16px;
+}
+
+/* sub services page*/
+.InDepthContent
+{
+	text-align: justify;
+}
+
+
+/*Products page*/
+
+/*Contact Us page*/
+input[type="text"], .error
+{
+	width: 189px;
+	float:left;
+}
+
+.form_image
+{
+ 	width: 39px;
+	height: 37px;
+}
+
+small
+{
+	float:left;
+	margin-top:0;
+}
+
+button, .button
+{
+        cursor: pointer;
+	height:30px;
+	width: 65px;
+	background-color: #7DA817;
+        border: none;
+        border-radius: 3px;
+}
+
+button, .button, .submit:hover, .submit:focus, .reset:hover, .reset:focus
+{       
+        border: none;
+        border-radius: 3px;
+	background-color: #849222;
+        cursor: pointer;
+	height:30px;
+	width: 65px;
+}

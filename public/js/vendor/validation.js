@@ -1,0 +1,9 @@
+$(document).ready(function()
+{
+    $('.InDepthContent').hide();
+    $('.more').click(function()
+    {
+        $('.more').hide();
+        $('.InDepthContent').show();
+    })
+});

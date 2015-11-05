@@ -1,0 +1,15 @@
+$(document).ready(function(){
+
+    $('.InDepthContent').hide();
+    $('.less').hide();
+
+    $('.more').click(function(){
+        $('.less').show();
+        $('.InDepthContent').toggle();
+    })
+
+    $('.less').click(function(){
+        $('.more').hide();
+        $('.InDepthContent').toggle();
+    })
+});

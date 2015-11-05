@@ -1,0 +1,47 @@
+<style>
+	.top-bar-section ul li a {
+		width:100%;
+	}
+</style>
+
+<% if @subcategory.errors.any? %>
+<div class="row">
+	<div class="large-10 large-centered columns form-errors">
+  		<div id="error_explanation">
+    		<h3><%= pluralize(@subcategory.errors.count, "error") %> prohibited this subcategory from being saved:</h3>
+    		<ul>
+    		<% @subcategory.errors.full_messages.each do |msg| %>
+      			<li><%= msg %></li>
+    		<% end %>
+    		</ul>
+  		</div>
+	</div>
+</div>
+<% end %>
+
+<div class="row" style="min-height:500px">
+	<div class="large-10 large-centered columns">
+			<h3>New Subcategory</h3>
+	</div>
+	<div class="large-10 large-centered columns">
+		<%= form_for ProductSubcategory.new, :url=>{:controller =>"admins", :action =>"create_subcategory"}, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+			<div>
+				<h6>Category</h6>
+				<%= f.select :product_category_id, options_from_collection_for_select(ProductCategory.order('name ASC'), "id", "name") %>
+			</div>
+			<div>
+				<h6>Name</h6>
+				<%= f.text_field :name, :maxlength =>255 %>
+			</div>
+			<div>
+				<h6>Description</h6>
+				<%= f.cktext_area :description, :class => 'ckeditor', :maxlength => 4000 %>
+			</div>
+			<div>
+				<h6>Add Display Image</h6>
+				<%= f.file_field :img_file %>
+			</div>
+			<div><%= f.submit "Submit" %> </div>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Action Antiques</title>
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Free Web tutorials">
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="/css/foundation.css">
+  <link href="/jsSlider/js-image-slider.css" rel="stylesheet" type="text/css" />
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <script src="/js/jquery-2.0.3.js"></script>
+  <script src="/js/modernizr.js"></script>
+  <script src="/js/vendor/product.js"></script>
+  <link href="/jsSlider/js-image-slider.css" rel="stylesheet" type="text/css" />
+  <script src="/jsSlider/js-image-slider.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    function confirmAction(){
+          var confirmed = confirm("Are you sure you want to log out?");
+          return confirmed;
+    }
+  </script>
+</head>
+<body>
+  <div class="row" style="background-color:#000; height:40px">
+    <div class="large-5 small-12 medium-6 medium-offset-6 large-offset-7 columns">
+      <%= link_to "Go to Storefront", {:controller=>"product_categories", :action=>"index"},:class=>"ProductDetails tiny button radius secondary QuickView", :style=>"height:25px;border-radius:5px;margin-top:10px;padding-top:5px" %>
+      <%= link_to "Setting", {:controller=>"product_categories", :action=>"index"},:class=>"ProductDetails tiny button radius secondary QuickView", :style=>"height:25px;border-radius:5px;margin-top:10px;padding-top:5px" %>
+      <%= link_to "Log Out", {:controller=>"admins", :action=>"show"}, :onclick => "confirmAction()", :class=>"ProductDetails tiny button radius secondary QuickView", :style=>"height:25px;border-radius:5px;margin-top:10px;padding-top:5px" %>
+    </div>
+  </div>
+	<!-- placeholder spot -->
+		<a name="top"></a>
+	<!--placeholder ends-->
+
+  <!--top bar section -->
+  <div class="row rowman">
+    <div class="large-12 columns heading bar">
+    <div class="large-2 small-4 columns">
+      <%= link_to image_tag("/img/Final logo.png", :border => 0, :class => 'site-logo'), {:controller => 'admins', :action => 'admin_info'}, :id => 'logo_a' %>
+    </div>
+    <div class="large-10 small-8 columns">
+      <p id="heading-p">India's Largest Indo-Portuguese Antiques Dealer</p>
+    </div>
+  </div>
+  </div>
+	<!-- <div class="row" style="height:50px">
+		<div class="large-12 columns">
+			<div class="row">
+				<div class="large-4 columns">
+					<img style="width:132px;height:100px" src="/img/action.jpg">
+				</div>			
+      </div>
+		</div>
+	</div> -->
+
+  <!-- top nav bar -->
+<nav class="row">
+    <div class="large-12 columns" style="padding:0">
+      <ul class="button-group radius even-5">
+        <li><a class="button" href="/admins/admin_info">Home</a></li>
+    <li><a class="button" href="/admins/new_category">Category</a></li>
+    <li><a class="button" href="/admins/new_subcategory">Subcategory</a></li>
+    <li><a class="button" href="/admins/new_subsubcategory">Subcategory Level 1</a></li>
+    <li><a class="button" href="/admins/new">Add Product</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Topbar Section -->
+  <!-- <div class="row">
+    <div class="large-12 columns">
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <li class="name" style="color:#FFFFFF"></li> -->
+          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+            <!-- <li class="toggle-topbar menu-icon"><a href="#"><div>Menu</div></a></li>
+        </ul>
+        <section class="top-bar-section">
+          <ul class="left">
+            <li><!%= link_to "Home", {:controller=>"admins", :action=>"admin_info"} %></li>
+            <li class="divider"></li>
+            <li><!%= link_to "Category", {:controller => "admins", :action => "new_category"} %></li>
+            <li class="divider"></li>
+            <li><!%= link_to "Subcategory", {:controller => "admins", :action => "new_subcategory"} %></li>
+            <li class="divider"></li>
+            <li><!%= link_to "Subcategory Level 1", {:controller => "admins", :action => "new_subsubcategory"} %></li>
+            <li class="divider"></li>
+            <li><!%= link_to "Add Product", {:controller=>"admins", :action=>"new"} %></li>
+            <li class="divider"></li>
+            <li><!%= link_to("Settings") %></li>
+            <li class="divider"></li>
+          </ul>
+          <ul class="right">
+            <li class="divider">
+            <li><!%= link_to "Log Out", {:controller=>"admins", :action=>"show"}, :onclick => "confirmAction()" %></li>
+          </ul> 
+        </section>
+      </nav>
+    </div>
+  </div> -->
+
+	<%= yield %>
+
+ <!--Footer-->
+   <div class="row">
+    <div class="large-10 large-centered columns footpadding" style="width:100%">
+      <footer class="footer">
+        <div class="row">
+          <div class="small-12 medium-6 large-8 columns">
+            <p class="logo"><i><img class="footer-logo" src="/img/Final Symbol.png"></i> Action Videotronics/Antiques</p>
+            <p class="footer-tag">India's Largest Indo-Portuguese Antiques Dealer</p> 
+            <p class="inline-list social">
+            <a href="#"><i class="fi-social-facebook"></i></a>
+            <a href="#"><i class="fi-social-twitter"></i></a>
+            <a href="#"><i class="fi-social-google-plus"></i></a>
+            <a href="#"><i class="fi-social-instagram"></i></a>
+            </p>
+            <p class="copywrite">Copywrite © 2015</p>
+          </div>
+          <div class="large-4 small-12 columns">
+            <div class="small-4 medium-4 large-4 columns" id="contact-info">
+              <ul class="contact">
+                <li><p class="footer-heading">AVA:</p></li>
+                <li><p><a href="#">About Us</a></p></li>
+                <li><p><a href="#">FAQ</a></p></li>
+                <li><p><a href="#">Contact Us</a></p></li>
+                <li><p><a href="#">Feedback</a></p></li>
+              </ul>
+            </div>
+            <div class="small-4 medium-4 large-4 columns" id="contact-info">
+              <ul class="contact">
+                <li><p class="footer-heading">Legal:</p></li>
+                <li><p><a href="#">Private Policy</a></p></li>
+                <li><p><a href="#">Terms And Condition</a></p></li>
+              </ul>
+            </div>
+            <div class="small-4 medium-4 large-4 columns" id="contact-info">
+              <ul class="contact">
+                <li><p class="footer-heading">Business:</p></li>
+                <li><p><a href="#">Partnership</a></p></li>
+              </ul>
+            </div>
+          </div>
+          </div>
+      </footer>
+    </div>
+   </div>
+<!-- <div class="row">
+    <div class="large-12 columns">
+<footer class="footer">
+  <div class="row">
+    <div class="small-12 medium-6 large-5 columns">
+      <p class="logo"><i class="fi-shield"></i> Action Antiques</p> 
+      <p class="footer-links">
+        <a href="#">Home</a>
+        <a href="#">Blog</a>
+        <a href="#">Pricing</a>
+        <a href="#">About</a>
+        <a href="#">Faq</a>
+        <a href="#">Contact</a>
+      </p>
+      <p class="copywrite">Copywrite © 2015</p>
+    </div>
+    <div class="small-12 medium-6 large-4 columns">
+      <ul class="contact">
+        <li><p><i class="fi-marker"></i>1595 Spring Street New Britain, CT 06051</p></li>
+        <li><p><i class="fi-telephone"></i>+1-656-453-9966</p></li>
+        <li><p><i class="fi-mail"></i>contact@emperor.com</p></li>
+      </ul>
+    </div>
+    <div class="small-12 medium-12 large-3 columns">
+      <p class="about">About Action Antiques</p>
+      <p class="about subheader">Strike me down, and I will become more powerful than you could possibly imagine.</p>
+      <ul class="inline-list social">
+        <a href="#"><i class="fi-social-facebook"></i></a>
+        <a href="#"><i class="fi-social-twitter"></i></a>
+        <a href="#"><i class="fi-social-linkedin"></i></a>
+        <a href="#"><i class="fi-social-github"></i></a>
+      </ul>
+    </div>
+  </div>
+</footer>
+ </div>
+  </div> -->
+  <script>
+    document.write('<script src=' + ('__proto__' in {} ? '/js/vendor/zepto' : '/js/vendor/jquery') + '.js><\/script>')
+  </script>
+
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= yield :javascript %>
+
+</body>
+</html>
