@@ -23,5 +23,5 @@ production:
   database: antiques
   pool: 5
   timeout: 5000
-  username: ava
-  password: ava
+  username: antique
+  password: action@123
