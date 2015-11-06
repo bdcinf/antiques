@@ -27,7 +27,7 @@
 							<a style="float:left" class="tiny button info radius edit-button" href="/admins/edit_category/<%= category.id %>">Edit</a>
 						</div>
 						<div class="large-2 small-2 columns" style="margin-top:1%">
-							<%= link_to 'Delete',url_for(controller: :admins, action: :delete,id: category.id),:class=> 'tiny button alert radius secondary delete-button', method: :delete, data: {confirm: "Are you sure you want to delete this category?"} %>
+							<%= link_to 'Delete',url_for(controller: :admins, action: :delete_category ,id: category.id),:class=> 'tiny button alert radius secondary delete-button', method: :delete, data: {confirm: "Are you sure you want to delete this category?"} %>
 						</div>
 					</div>	
 					<hr>

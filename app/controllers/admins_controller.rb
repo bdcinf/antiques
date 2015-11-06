@@ -105,7 +105,7 @@ class AdminsController < ApplicationController
 		@product = Product.find(params[:id].to_i)
 		@product.destroy
 		respond_to do |format|
-		  format.html { redirect_to :back }
+		  format.html { redirect_to(:back) }
 		  format.json { head :no_content }
 		end
 	end
@@ -158,7 +158,7 @@ class AdminsController < ApplicationController
 		@category = ProductCategory.find(params[:id].to_i)
 		@category.destroy
 		respond_to do |format|
-		  format.html { redirect_to :controller => 'admins', :action => 'show_categories' }
+		  format.html { redirect_to(:back) }
 		  format.json { head :no_content }
 		end
 	end
@@ -215,7 +215,7 @@ class AdminsController < ApplicationController
 		@subcategory = ProductSubcategory.find(params[:id].to_i)
 		@subcategory.destroy
 		respond_to do |format|
-		  format.html { redirect_to :controller => 'admins', :action => 'show_subcategories' }
+		  format.html { redirect_to(:back) }
 		  format.json { head :no_content }
 		end
 	end
@@ -275,7 +275,7 @@ class AdminsController < ApplicationController
 		@subsubcategory = ProductSubsubcategory.find(params[:id].to_i)
 		@subsubcategory.destroy
 		respond_to do |format|
-		  format.html { redirect_to :controller => 'admins', :action => 'show_subsubcategories' }
+		  format.html { redirect_to(:back) }
 		  format.json { head :no_content }
 		end
 	end
