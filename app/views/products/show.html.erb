@@ -24,7 +24,9 @@
 				</div>
 			</div>
 			<div class="large-6 columns">
-				<h2 id="product_nametag"><%= @product.product_var_id %>. <%= @product.name %></h2>
+				<h2 id="product_nametag"><%= @product.name %></h2>
+				<br>
+				<span id="price_span"><h4 id="product_id_tag">Product Id : </h4><h5 id="product_id"><%= @product.product_var_id %></h5></span>
 				<br>
 				<span id="price_span"><h4 id="price_tag">Price : </h4><h5 id="price">INR <%= @product.price %></h5></span>
 				<br>
