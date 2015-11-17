@@ -110,7 +110,7 @@
 				<% @categories.each do |category| %>
 			        <li>
 
-			        	<% if category.empty? %>
+			        	<% if category.product_subcategories.empty? %>
 			        	<a href="/product_subcategory/<%= category.id %>" class="<%= check_has_dropdown_category(category) %>">
 			        	<% else %>
 			        	<a class="<%= check_has_dropdown_category(category) %>">
