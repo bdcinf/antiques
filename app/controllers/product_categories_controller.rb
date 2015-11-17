@@ -1,7 +1,7 @@
 class ProductCategoriesController < ApplicationController
 	
 	def index
-		@categories = ProductCategory.order("name ASC")
+		@categories = ProductCategory.where('status = ?', 'active').order("name ASC")
 	end
 
 	def show

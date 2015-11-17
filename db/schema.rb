@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150911005502) do
+ActiveRecord::Schema.define(:version => 20151117070926) do
+
+  create_table "not_for_sales", :force => true do |t|
+    t.string   "name"
+    t.string   "image_file_file_name"
+    t.string   "image_file_content_type"
+    t.integer  "image_file_file_size"
+    t.datetime "image_file_updated_at"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
 
   create_table "product_categories", :force => true do |t|
     t.string   "name"
@@ -22,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20150911005502) do
     t.text     "description"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.string   "status"
   end
 
   create_table "product_images", :force => true do |t|
@@ -44,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20150911005502) do
     t.text     "description"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.string   "status"
   end
 
   create_table "product_subsubcategories", :force => true do |t|
@@ -57,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20150911005502) do
     t.text     "description"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
+    t.string   "status"
   end
 
   create_table "products", :force => true do |t|

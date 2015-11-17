@@ -67,6 +67,13 @@ $(function(){
 				<%= f.cktext_area :description, :class => 'ckeditor', :maxlength => 4000 %>
 			</div>
 			<div>
+				<h6>Status</h6>
+				<%= f.radio_button :status, 'active' %> 
+			  	<%= label :status_active, 'Active' %>
+			  	<%= f.radio_button :status, 'hidden' %>
+			  	<%= label :status_hidden, 'Hidden' %>
+			</div>
+			<div>
 				<%= f.label "Edit Display Image" %>
 				<% if @subsubcategory.img_file.exists? %>
 					<%= image_tag @subsubcategory.img_file.url, {:id => :image, :style => "font-weight:bold; width:150px; height:150px"} %>

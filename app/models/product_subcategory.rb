@@ -1,5 +1,5 @@
 class ProductSubcategory < ActiveRecord::Base
-  attr_accessible :product_category_id, :name, :description, :img_file, :_destroy_img_file
+  attr_accessible :product_category_id, :name, :description, :status, :img_file, :_destroy_img_file
   belongs_to :product_category
   	has_many :product_subsubcategories
 

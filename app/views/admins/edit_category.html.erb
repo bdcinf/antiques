@@ -35,6 +35,13 @@
 				<%= f.cktext_area :description, :class => 'ckeditor', :maxlength => 4000 %>
 			</p>
 			<p>
+				<h6>Status</h6>
+				<%= f.radio_button :status, 'active' %> 
+			  	<%= label :status_active, 'Active' %>
+			  	<%= f.radio_button :status, 'hidden' %>
+			  	<%= label :status_hidden, 'Hidden' %>
+			</p>
+			<p>
 				<%= f.label "Edit Display Image" %>
 				<% if @category.img_file.exists? %>
 					<%= image_tag @category.img_file.url, {:id => :image, :style => "font-weight:bold; width:150px; height:150px"} %>
