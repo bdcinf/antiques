@@ -16,7 +16,7 @@ Antiques::Application.routes.draw do
   post "/contact_us" => "product_categories#contact_us"
   get "/terms" => "product_categories#terms"
   get "/faq" => "product_categories#faq"
-  get "/private_policy" => "product_categories#private_policy"
+  get "/privacy_policy" => "product_categories#privacy_policy"
   get "/businesses" => "product_categories#businesses"
   get "/about_us" => "product_categories#about_us"
 

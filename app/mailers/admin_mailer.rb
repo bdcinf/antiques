@@ -3,6 +3,6 @@ class AdminMailer < ActionMailer::Base
 
   def send_mail(user)
     @user = user
-    mail(:to => "info@actionvideoantiques.com", :subject => user["subject"])
+    mail(:to => "info@actionumisphil.com", :subject => user["subject"])
   end
 end

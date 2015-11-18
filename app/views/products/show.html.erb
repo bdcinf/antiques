@@ -24,14 +24,14 @@
 				</div>
 			</div>
 			<div class="large-6 columns">
-				<h2 id="product_nametag"><%= @product.name %></h2>
+				<p id="product_nametag"><b>Product Name :</b> <%= @product.name %></p>
 				<br>
-				<span id="price_span"><h4 id="product_id_tag">Product Id : </h4><h5 id="product_id"><%= @product.product_var_id %></h5></span>
+				<p id="product_id_tag" style="margin-bottom:0"><b>Product Id : </b><%= @product.product_var_id %></p>
 				<br>
-				<span id="price_span"><h4 id="price_tag">Price : </h4><h5 id="price">INR <%= @product.price %></h5></span>
+				<p id="price_tag" style="margin-bottom:0"><b>Price : </b>INR <%= @product.price %></p>
 				<br>
-				<h4 id="pro_description_tag">Product Description :</h4>
-				<p><i><%= raw(@product.description) %></i></p>
+				<p id="pro_description_tag" style="margin-bottom:0"><b>Product Description :</b></p>
+				<p><%= raw(@product.description) %></p>
 			</div>
 		</div>
 </div>

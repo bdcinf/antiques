@@ -186,7 +186,7 @@ class AdminsController < ApplicationController
 		      format.html { redirect_to :controller => "admins",:action=>"admin_info", notice: 'Subcategory was successfully created.' }
 		      format.json { render json: @subcategory, status: :created, location: @subcategory }
 		    else
-		      format.html { render action: "new_subcategory" }
+		      format.html { render action: "new_subcategory", :object => @categories }
 		      format.json { render json: @subcategory.errors, status: :unprocessable_entity }
 		    end
 	  	end
@@ -246,7 +246,7 @@ class AdminsController < ApplicationController
 		      format.html { redirect_to :controller => "admins",:action=>"admin_info", notice: 'Subcategory Level 1 was successfully created.' }
 		      format.json { render json: @subsubcategory, status: :created, location: @subsubcategory }
 		    else
-		      format.html { render action: "new_subsubcategory" }
+		      format.html { render action: "new_subsubcategory", :object => @categories, :object => @subcategories }
 		      format.json { render json: @subsubcategory.errors, status: :unprocessable_entity }
 		    end
 	  	end
