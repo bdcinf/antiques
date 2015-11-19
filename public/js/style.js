@@ -76,6 +76,7 @@
 
  	 var jq = jQuery.noConflict();
 		jq('#ex1').zoom({
+			on: 'click',
 			duration: 120,
 			touch: true,
 			onZoomIn: false,
