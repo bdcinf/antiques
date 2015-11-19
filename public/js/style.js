@@ -75,10 +75,12 @@
 	});
 
  	 var jq = jQuery.noConflict();
-		jq('#ex1').zoom({duration: 120,
-touch: true,onZoomIn: false,
-magnify: 1
- });
+		jq('#ex1').zoom({
+			duration: 120,
+			touch: true,
+			onZoomIn: false,
+			magnify: 1
+ 		});
 // 	// jq('.picZoomer').picZoomer();
 // 	jq('.zoom').zoomIn({
 // // change zoom value by step
