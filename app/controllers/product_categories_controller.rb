@@ -2,6 +2,7 @@ class ProductCategoriesController < ApplicationController
 	
 	def index
 		@categories = ProductCategory.where('status = ?', 'active').order("name ASC")
+		@sliders = Slider.all
 	end
 
 	def show
