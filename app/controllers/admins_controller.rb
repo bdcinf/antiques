@@ -296,22 +296,28 @@ class AdminsController < ApplicationController
 		end	
 	end
 
+	#sliders
 
-	private
+	def show_slider
+		@sliders = Slider.all
+	end
 
- 	# def product_params
-  #   	params.require(:product).permit(:name, :product_id, :price, :product_category_id, :product_subcategory_id, :product_subsubcategory_id, :description, :status, :img_file, :_destroy_img_file , product_images_attributes: [:id, :image, :_destroy])
-  # 	end
+	def create_slider
+		if params[:images]
+		    params[:images].each do |image| 
+		    	@slider = Slider.new(image: image)
+		    	@slider.save
+		    end
+		end
+		redirect_to "/admins/show_slider"
+	end
 
-  # 	def product_category_params
-  # 		params.require(:product_category).permit(:name, :description, :img_file, :_destroy_img_file)
-  # 	end
-
-  # 	def product_subcategory_params
-  # 		params.require(:product_subcategory).permit(:product_category_id, :name, :description, :img_file, :_destroy_img_file)
-  # 	end
-
-  # 	def product_subsubcategory_params
-  # 		params.require(:product_subsubcategory).permit(:product_category_id,:product_subcategory_id, :name, :description, :img_file, :_destroy_img_file)
-  # 	end
+	def delete_slider
+		@slider = Slider.find(params[:id].to_i)
+		@slider.destroy
+		respond_to do |format|
+		  format.html { redirect_to(:back) }
+		  format.json { head :no_content }
+		end
+	end
 end

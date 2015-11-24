@@ -19,12 +19,16 @@ Antiques::Application.routes.draw do
   get "/privacy_policy" => "product_categories#privacy_policy"
   get "/businesses" => "product_categories#businesses"
   get "/about_us" => "product_categories#about_us"
+  post "/product_category/send_email" => "product_categories#send_email"
 
   get "/product_subcategory/:id" => "product_subcategories#show"
   get "/product_subsubcategory/:id" => "product_subsubcategories#show"
   resource :admin do
     get :admin_info
   end
+
+  delete "/admins/delete_slider/:id" => "admins#delete_slider"
+  get "/admins/show_slider" => "admins#show_slider"
 
   get "/update_subcat" => "admins#update_subcat"
   get "/update_subsubcat" => "admins#update_subsubcat"

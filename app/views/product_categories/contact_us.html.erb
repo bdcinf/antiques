@@ -9,28 +9,32 @@
  
     <!-- Contact Details -->
     <div class="large-6 small-12 columns">
-   		<%= form_tag :action => "send_email" do %>
+   		<%= form_for Email.new, :url=>{:controller =>"product_category", :action =>"send_email"} do |f| %>
 			<div>
 				<h6>Name</h6>
-				<%= text_field_tag :name, params[:name], :placeholder => "Full Name", :maxlength =>255, :required => true %>
+				<%= f.text_field :name, :placeholder => "Full Name", :maxlength =>255, :required => true %>
 			</div>
 			<div>
 				<h6>Email</h6>
-				<%= text_field_tag :email, params[:email], :placeholder => "username@address.com", :required => true %>
+				<%= f.text_field :mail, :placeholder => "username@address.com", :required => true %>
 			</div>
 			<div>
 				<h6>Phone No</h6>
-				<%= text_field_tag :phone, params[:phone], :placeholder => "Enter 10 digit mobile number", :required => true %>
+				<%= f.text_field :phone, :placeholder => "Enter 10 digit mobile number", :required => true %>
+			</div>
+			<div>
+				<h6>Image</h6>
+				<%= f.file_field :image_file, :required => true %>
 			</div>
 			<div>
 				<h6>Subject</h6>
-				<%= text_field_tag :subject, params[:subject], :placeholder => "Subject", :required => true %>
+				<%= f.text_field :subject, :placeholder => "Subject", :required => true %>
 			</div>
 			<div>
 				<h6>Your Message</h6>
-				<%= text_area_tag :message, params[:message], :placeholder => "Enter your message here" ,:style => "height:250px", :required => true %>
+				<%= f.text_area :message, :placeholder => "Enter your message here" ,:style => "height:250px", :required => true %>
 			</div>
-			<div><%= submit_tag "Send Message", :class=>"small radius button", :style => "background-color:#027CD5; passing-top:14px" %> </div>
+			<div><%= f.submit "Send Message", :class=>"small radius button", :style => "background-color:#027CD5; passing-top:14px" %> </div>
 		<% end %>
     </div>
 

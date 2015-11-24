@@ -1,8 +1,9 @@
 class AdminMailer < ActionMailer::Base
   default from: "bdcatpl@gmail.com"
 
-  def send_mail(user)
-    @user = user
-    mail(:to => "info@actionumisphil.com", :subject => user["subject"])
+  def send_mail(email)
+    @email = email
+    attachments[@email["image_file_file_name"].to_s] = File.read("#{Rails.root}/public/mail_images/#{@email['id'].to_s}/:image_file" )
+    mail(:to => "info@actionumisphil.com", :subject => email["subject"])
   end
 end

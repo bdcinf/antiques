@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151117070926) do
+ActiveRecord::Schema.define(:version => 20151124043837) do
+
+  create_table "emails", :force => true do |t|
+    t.string   "name"
+    t.string   "mail"
+    t.string   "phone"
+    t.string   "image_file_file_name"
+    t.string   "image_file_content_type"
+    t.integer  "image_file_file_size"
+    t.datetime "image_file_updated_at"
+    t.string   "subject"
+    t.text     "message"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
 
   create_table "not_for_sales", :force => true do |t|
     t.string   "name"
@@ -87,6 +101,20 @@ ActiveRecord::Schema.define(:version => 20151117070926) do
     t.string   "status"
     t.datetime "created_at",                                               :null => false
     t.datetime "updated_at",                                               :null => false
+  end
+
+  create_table "slider_images", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sliders", :force => true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
 end

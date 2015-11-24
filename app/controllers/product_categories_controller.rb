@@ -13,8 +13,17 @@ class ProductCategoriesController < ApplicationController
 	end
 
 	def send_email
-  		@user = params
-	  	AdminMailer.send_mail(@user).deliver
-	  	redirect_to "/contact_us"
+  		@email = Email.new(params[:email])
+  		respond_to do |format|
+		    if @email.save
+		    	@email = Email.last
+		      AdminMailer.send_mail(@email).deliver
+		      format.html { redirect_to "/contact_us", notice: 'Category was successfully created.' }
+		      format.json { render json: @email, status: :created, location: @email }
+		    else
+		      format.html { render action: "contact_us" }
+		      format.json { render json: @email.errors, status: :unprocessable_entity }
+		    end
+	  	end
 	end
 end
