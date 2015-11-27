@@ -32,9 +32,9 @@ class AdminsController < ApplicationController
 	def show_products
 		if params[:product_subsubcategory_id].nil?
 			if params[:product_subcategory_id].nil?
-				@products = Product.where('product_category_id = ?', params[:product_category_id])
+				@products = Product.where('product_category_id = ? AND product_subcategory_id IS NULL AND product_subsubcategory_id IS NULL', params[:product_category_id])
 			else
-				@products = Product.where('product_subcategory_id = ?', params[:product_subcategory_id])
+				@products = Product.where('product_subcategory_id = ? AND product_subsubcategory_id IS NULL', params[:product_subcategory_id])
 			end
 		else
 			@products = Product.where('product_subsubcategory_id = ?', params[:product_subsubcategory_id])
@@ -84,13 +84,19 @@ class AdminsController < ApplicationController
 
 	  	respond_to do |format|
 		    if @product.update_attributes(params[:product])
+				if params[:product][:product_subsubcategory_id].nil?
+					@product.update_attribute(:product_subsubcategory_id, nil)
+				end
+				if params[:product][:product_subcategory_id].nil?
+					@product.update_attribute(:product_subcategory_id, nil)
+				end
 		     
-		      if params[:images]
-		        #===== The magic is here ;)
-		        params[:images].each { |image|
-		          @product.product_images.create(image: image)
-		        }
-		      end
+		      	if params[:images]
+			        #===== The magic is here ;)
+			        params[:images].each { |image|
+			          @product.product_images.create(image: image)
+			        }
+		      	end
 
 		      format.html { redirect_to session.delete(:return_to), notice: 'Product was successfully created.' }
 		      format.json { render json: @product, status: :created, location: @product }
@@ -171,6 +177,7 @@ class AdminsController < ApplicationController
 		if @subcategories.empty?
 			redirect_to :controller => 'admins', :action => 'show_products', :product_category_id => params[:id], :product_subcategory_id => nil
 		end
+		@products = Product.where('product_category_id = ? AND product_subcategory_id IS NULL',params[:id].to_i).order('name ASC')
 	end
 
 	def new_subcategory
@@ -230,6 +237,7 @@ class AdminsController < ApplicationController
 		if @subsubcategories.empty?
 			redirect_to :controller => 'admins', :action => 'show_products',:product_category_id => @category.id, :product_subcategory_id => params[:id].to_i, :product_subsubcategory_id => nil
 		end
+		@products = Product.where('product_subcategory_id = ? AND product_subsubcategory_id IS NULL',params[:id].to_i).order('name ASC')
 	end
 
 	def new_subsubcategory
@@ -315,6 +323,7 @@ class AdminsController < ApplicationController
 	def delete_slider
 		@slider = Slider.find(params[:id].to_i)
 		@slider.destroy
+		byebug
 		respond_to do |format|
 		  format.html { redirect_to(:back) }
 		  format.json { head :no_content }

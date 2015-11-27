@@ -1,7 +1,7 @@
 class ProductSubsubcategory < ActiveRecord::Base
   attr_accessible :product_category_id,:product_subcategory_id, :name, :description, :status, :img_file, :_destroy_img_file
-  belongs_to :product_subcategory
-  	has_many :products
+  belongs_to :product_subcategory, :polymorphic => true
+  	has_many :products, :dependent => :destroy
 
   	has_attached_file :img_file,
 	    :default_url => "/images/:style/missing.png",

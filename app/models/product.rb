@@ -2,8 +2,9 @@ class Product < ActiveRecord::Base
   attr_accessible :name, :product_var_id, :price, :product_category_id, :product_subcategory_id, :product_subsubcategory_id, :description, :status, :img_file, :_destroy_img_file, :product_images_attributes
   before_save :destroy_img_file?
 
-	belongs_to :product_subcategory
-	belongs_to :product_category
+	belongs_to :product_subcategory, :polymorphic => true
+	belongs_to :product_category, :polymorphic => true
+	belongs_to :product_subsubcategory, :polymorphic => true
 	has_many :product_images, :dependent => :destroy
 
 	has_attached_file :img_file,

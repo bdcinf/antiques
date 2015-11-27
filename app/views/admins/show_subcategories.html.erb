@@ -32,6 +32,32 @@
 				<% end %>
 			<% end %>
 			</div>
+			<div class="large-10 large-centered columns">
+			<% if !@products.empty? %>
+				<div class="large-10 large-centered columns">
+						<h4><b>Products (will not be shown)<b></h4>
+				</div>
+			<% end %>
+			<% if !@products.empty? %>
+				<% @products.each do |product| %>
+					<div class="row" style="background:#eee; border-radius:8px">
+						<div class="large-1 columns" style="margin-top:1%; margin-bottom:1%">
+							<img src="<%= product.img_file.url %>" style="max-width:100%;height:50px">
+						</div>
+						<div class="large-7 columns" style="margin-top:1%">
+							<h4 style="float:left; font-size:18px; font-weight:bold"><%= product.name %></h4>
+						</div>
+						<div class="large-2 columns" style="margin-top:1%">
+							<a style="float:left" class="ProductDetails tiny button radius info QuickView" href="/admins/edit/<%= product.id %>">Edit</a>
+						</div>
+						<div class="large-2 columns" style="margin-top:1%">
+							<%= link_to 'Delete','/admins/delete/'+product.id.to_s, :class =>'ProductDetails tiny button radius alert QuickView',method: :delete, data: {confirm: "Are you sure you want to delete this product?"} %>
+						</div>
+					</div>
+					<hr>
+				<% end %>
+			<% end %>
+			</div>
 		</div>
 	</div>
 </div>

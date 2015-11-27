@@ -1,7 +1,7 @@
 class ProductCategory < ActiveRecord::Base
   attr_accessible :name, :description, :status, :img_file, :_destroy_img_file
-  has_many :product_subcategories
-	has_many :products
+  	has_many :product_subcategories, :dependent => :destroy
+	has_many :products, :dependent => :destroy
 
 	has_attached_file :img_file, 
 		:default_url => "/images/:style/missing.png",
