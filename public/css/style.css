@@ -380,7 +380,7 @@ p.title {
       background: #0270C0 !important;
     }
 
-  .zoom {
+/*  .zoom {
     display: inline-block;
   }
 
@@ -401,7 +401,7 @@ p.title {
     right: 28px;
     color: #555;
     font: bold 13px/1 sans-serif;
-}
+}*/
 
 .fa-chevron-right, .fa-chevron-down{
   margin-left: 2%;
@@ -409,6 +409,21 @@ p.title {
 
 .answer{
   margin-left: 5%;
+}
+
+.img-zoom {
+    width: 310px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+}
+ 
+.transition {
+    -webkit-transform: scale(2); 
+    -moz-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
 }
 
 

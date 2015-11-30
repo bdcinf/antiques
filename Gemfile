@@ -45,3 +45,4 @@ gem "paperclip"
 gem 'ckeditor'
 gem 'rails_12factor', group: :production
 gem 'rb-readline'
+gem 'devise'
