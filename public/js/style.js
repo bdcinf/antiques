@@ -74,14 +74,23 @@
 
 	});
 
- 	 var jq = jQuery.noConflict();
-		jq('#ex1').zoom({
-			on: 'click',
-			duration: 120,
-			touch: true,
-			onZoomIn: false,
-			magnify: 1
- 		});
+	$(document).ready(function(){
+    $('.img-zoom').hover(function() {
+        $(this).addClass('transition');
+ 
+    }, function() {
+        $(this).removeClass('transition');
+    });
+  });
+
+ 	//  var jq = jQuery.noConflict();
+		// jq('#ex1').zoom({
+		// 	on: 'click',
+		// 	duration: 120,
+		// 	touch: true,
+		// 	onZoomIn: false,
+		// 	magnify: 1
+ 	// 	});
 // 	// jq('.picZoomer').picZoomer();
 // 	jq('.zoom').zoomIn({
 // // change zoom value by step
