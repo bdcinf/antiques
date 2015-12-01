@@ -27,7 +27,7 @@
     <div class="large-5 small-12 medium-6 medium-offset-6 large-offset-7 columns">
       <%= link_to "Go to Storefront", {:controller=>"product_categories", :action=>"index"},:class=>"ProductDetails tiny button radius secondary QuickView", :style=>"height:25px;border-radius:5px;margin-top:10px;padding-top:5px" %>
       <%= link_to "Setting", {:controller=>"product_categories", :action=>"index"},:class=>"ProductDetails tiny button radius secondary QuickView", :style=>"height:25px;border-radius:5px;margin-top:10px;padding-top:5px" %>
-      <%= link_to "Log Out", {:controller=>"admins", :action=>"show"}, :onclick => "confirmAction()", :class=>"ProductDetails tiny button radius secondary QuickView", :style=>"height:25px;border-radius:5px;margin-top:10px;padding-top:5px" %>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete, :onclick => "confirmAction()", :class=>"ProductDetails tiny button radius secondary QuickView", :style=>"height:25px;border-radius:5px;margin-top:10px;padding-top:5px") %>
     </div>
   </div>
 	<!-- placeholder spot -->

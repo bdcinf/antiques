@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,9 +27,6 @@
     <div class="large-2 small-4 columns">
       <%= link_to image_tag("/img/Final logo.png", :border => 0, :class => 'site-logo'), {:controller => 'product_categories', :action => 'index'}, :id => 'logo_a' %>
     </div>
-    <div class="large-10 small-8 columns">
-      <p id="heading-p">India's Largest Indo-Portuguese Antiques Dealer</p>
-    </div>
   </div>
   </div>
 
@@ -58,27 +54,9 @@ body {
           <div class="row">
             <div class="large-12 columns panel login-panel">
               <div class="signup-panel">
-                <p class="welcome">Action Antiques Login</p>
-              <%= form_tag :action => :check_login do %>
-                  <div class="row collapse">
-                    <div class="small-2 columns">
-                      <span class="prefix"><i class="fi-mail"></i></span>
-                    </div>
-                    <div class="small-10  columns">
-                      <%= text_field_tag :user, nil, :placeholder => "Username" %>
-                    </div>
-                  </div>
-                  <div class="row collapse">
-                    <div class="small-2 columns ">
-                      <span class="prefix"><i class="fi-lock"></i></span>
-                    </div>
-                    <div class="small-10 columns ">
-                      <%= password_field_tag :password, nil,:placeholder => "Password" %>
-                    </div>
-                  </div>
-                  <%= submit_tag 'Log In', :class =>"expand button" %>
-                <%end%>
-                </p>
+
+              <%= yield %>
+
               </div>
             </div>
            </div>

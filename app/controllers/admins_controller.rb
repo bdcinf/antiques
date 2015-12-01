@@ -291,17 +291,13 @@ class AdminsController < ApplicationController
 	# Other actions
 
 	def admin_info
+		puts "============================"
+		puts @categories.to_json
+		puts "============================"
 		@categories = ProductCategory.order('name ASC')
-	end
-
-	def check_login
-		if params[:user] == "admin" && params[:password] == "admin"
-			redirect_to :controller =>'admin',:action => 'admin_info'
-			flash[:message] = "Successful"
-		else
-			redirect_to "/admin"
-			flash[:message] = "Invalid User!"
-		end	
+		puts "============================"
+		puts @categories.to_json
+		puts "============================"
 	end
 
 	#sliders

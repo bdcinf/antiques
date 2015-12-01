@@ -21,4 +21,8 @@ class ProductsController < ApplicationController
 	def show
 		@product = Product.find(params[:id])
 	end
+
+	def search
+		@search_results = Product.where("lower(name) LIKE ?", "%#{params[:search]}%".downcase).paginate(:page => params[:page], :per_page => 16)
+	end
 end

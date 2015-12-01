@@ -1,4 +1,6 @@
 Antiques::Application.routes.draw do
+  devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations", :passwords => "passwords" }
+
   mount Ckeditor::Engine => '/ckeditor'
   root :to => "product_categories#index"
 
@@ -20,6 +22,8 @@ Antiques::Application.routes.draw do
   get "/businesses" => "product_categories#businesses"
   get "/about_us" => "product_categories#about_us"
   post "/product_category/send_email" => "product_categories#send_email"
+  # get "/product/search_by_product" => "products#search_by_product"
+  get "/product/search" => "products#search", :as => "search"
 
   get "/product_subcategory/:id" => "product_subcategories#show"
   get "/product_subsubcategory/:id" => "product_subsubcategories#show"

@@ -46,3 +46,4 @@ gem 'ckeditor'
 gem 'rails_12factor', group: :production
 gem 'rb-readline'
 gem 'devise'
+gem 'will_paginate', '~> 3.0.6'
