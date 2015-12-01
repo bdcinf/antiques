@@ -1,3 +1,3 @@
-class UsersController < Devise::ApplicationController
+class UsersController < ApplicationController
   layout false
 end
