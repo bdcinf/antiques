@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-
+	require 'will_paginate/array'
+	
 	def index
 		if params[:product_subsubcategory_id].nil?
 			if params[:product_subcategory_id].nil?
@@ -23,6 +24,6 @@ class ProductsController < ApplicationController
 	end
 
 	def search
-		@search_results = Product.where("lower(name) LIKE ?", "%#{params[:search]}%".downcase).paginate(:page => params[:page], :per_page => 16)
+		@search_results = Product.search(params[:search]).paginate(:page => params[:page], :per_page => 16)
 	end
 end

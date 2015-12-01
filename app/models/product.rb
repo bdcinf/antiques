@@ -21,12 +21,21 @@ class Product < ActiveRecord::Base
   	validates :description, presence: true, length: {maximum: 4000 }
   	validates :img_file, presence: true
 
+
+  	def self.search(*args)
+	   return [] if args.blank?
+	   cond_text, cond_values = [], []
+	   args.each do |str|
+	       next if str.blank?  
+	       cond_text << "( %s )" % str.split.map{|w| "lower(name) LIKE ? "}.join(" OR ")
+	       cond_values.concat(str.split.map{|w| "%#{w}%".downcase})
+	    end
+	    all :conditions =>  [cond_text.join(" OR "), *cond_values]
+	end
+
 	private
 
 	def destroy_img_file?
-		puts "======================="
-		puts @_destroy_img_file
-		puts "======================="
     	self.img_file.clear if @_destroy_img_file == "1"
   	end
 end
