@@ -15,6 +15,9 @@ class ProductCategoriesController < ApplicationController
 
 	def send_email
   		@email = Email.new(params[:email])
+  		# if !params[:image_file]
+  		# 	params[:image_file] = nil
+  		# end
   		respond_to do |format|
 		    if @email.save
 		    	@email = Email.last

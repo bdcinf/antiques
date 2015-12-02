@@ -1,6 +1,6 @@
 
 	<% if !flash.empty? %>
-	<div class="panel msg" style="color:#fff; background-color:#008000, height:45px; border-radius:10px">
+	<div class="panel" style="color:#fff; background-color:#008000; height:45px; border-radius:10px">
 		<% flash.each do |name, msg| %>
 		<%= content_tag :div, msg, class: "alert alert-info" %>
 		<% end %>
@@ -11,7 +11,7 @@
 <div class="row">
 	<div class="large-12 small-12 columns">
 		<h3 class="title_bold" style="margin-top:3%">Get in Touch!</h3>
-		<p>Due to our large selection of merchandise we are unable to display all of the items in stock. If after looking through our web site you can't find what you are looking for email us at: actionumisphil@gmail.com  and we will get back to you with a picture, sizes and any other information that you require, we will get back to you in a weeks time.</p>
+		<p>Due to our large selection of merchandise we are unable to display all of the items in stock. If after looking through our web site you can't find what you are looking for email us at: actionumisphil@gmail.com  and we will get back to you with a picture, sizes and any other information that you require, we will get back to you in a week's time.</p>
 	</div>
 </div>
 
@@ -30,7 +30,7 @@
 			</div>
 			<div>
 				<h6>Phone No</h6>
-				<%= f.text_field :phone, :placeholder => "Enter 10 digit mobile number", :required => true %>
+				<%= f.text_field :phone, :placeholder => "Enter mobile number", :maxlength =>15, :required => true %>
 			</div>
 			<div>
 				<h6>Image</h6>
