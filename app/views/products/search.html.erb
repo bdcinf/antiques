@@ -35,7 +35,7 @@
 	<div class="large-12 small-12 columns">
 		<div class="row">
 			<% @search_results.each do |result| %>
-			<a href="/products/<%= result.id %>">
+			<a href="/products/<%= result.id %>" title="Product Category : <%= ProductCategory.find(result.product_category_id).name %>, Product Subcategory : <% if !result.product_subcategory_id.empty? %><%= ProductSubcategory.find(result.product_subcategory_id).name %><% end %>, Product Subcategory Level 1 : <% if !result.product_subsubcategory_id.empty? %><%= ProductSubsubcategory.find(result.product_subsubcategory_id).name %><% end %>">
 				<div class="large-3 small-6 columns">
 					<div class="category_img">
 						<img src="<%= result.img_file.url %>">
@@ -45,6 +45,14 @@
 			</a>
 			<% end %>
 		</div>
-		<div id="pagination"><%= will_paginate @search_results %></div>
+		<div><%= will_paginate @search_results, :class="pagination" %></div>
 	</div>
 </div>
+<style type="text/css">
+	.pagination { padding: 3px; margin: 3px; } 
+	.pagination a { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #aaaadd; text-decoration: none; color: #000099; } 
+	.pagination a:hover, 
+	.pagination a:active { border: 1px solid #000099; color: #000; } 
+	.pagination span.current { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #000099; font-weight: bold; background-color: #000099; color: #FFF; } 
+	.pagination span.disabled { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #eee; color: #ddd; }
+</style>

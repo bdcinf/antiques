@@ -19,7 +19,7 @@ class ProductCategoriesController < ApplicationController
 		    if @email.save
 		    	@email = Email.last
 		      AdminMailer.send_mail(@email).deliver
-		      format.html { redirect_to "/contact_us", notice: 'Category was successfully created.' }
+		      format.html { redirect_to "/contact_us", notice: 'Thank you. We will get back in touch with you soon!' }
 		      format.json { render json: @email, status: :created, location: @email }
 		    else
 		      format.html { render action: "contact_us" }
