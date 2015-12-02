@@ -11,8 +11,8 @@ Antiques::Application.configure do
   config.action_mailer.default_url_options = { :host => 'actionumisphil.com' }
 
   ActionMailer::Base.smtp_settings = {
-    :address              => "45.55.135.206",
-    :port                 => 22,
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
     :domain               => "actionumisphil.com",
     :user_name            => "bdcatpl@gmail.com",
     :password             => "bdcatpl@12345",
