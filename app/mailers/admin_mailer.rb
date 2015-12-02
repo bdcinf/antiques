@@ -1,4 +1,5 @@
 class AdminMailer < ActionMailer::Base
+  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
   default from: "bdcatpl@gmail.com"
 
   def send_mail(email)
