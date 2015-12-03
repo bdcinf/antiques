@@ -291,13 +291,7 @@ class AdminsController < ApplicationController
 	# Other actions
 
 	def admin_info
-		puts "============================"
-		puts @categories.to_json
-		puts "============================"
 		@categories = ProductCategory.order('name ASC')
-		puts "============================"
-		puts @categories.to_json
-		puts "============================"
 	end
 
 	#sliders
@@ -319,7 +313,6 @@ class AdminsController < ApplicationController
 	def delete_slider
 		@slider = Slider.find(params[:id].to_i)
 		@slider.destroy
-		byebug
 		respond_to do |format|
 		  format.html { redirect_to(:back) }
 		  format.json { head :no_content }
